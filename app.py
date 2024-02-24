@@ -12,10 +12,6 @@ session = Session()
 
 def main(page: ft.Page):
     page.title = 'Cadastro de clientes'
-    # def button_clicked(e):
-    #     input_v.value = f"Nome: '{user_input.value}' e senha: '{
-    #         age_input.value}'."
-    #     page.update()
     lista_clientes = ft.ListView(expand=1, auto_scroll=True)
 
     def cadastro(e):
@@ -42,65 +38,6 @@ def main(page: ft.Page):
         page.update()
         print('Cliente cadastrado com sucesso')
         
-    # def delete_cliente(e, cliente_id):
-    #     cliente = session.query(Cliente).get(cliente_id)
-    #     try:
-    #         if cliente:
-    #             session.delete(cliente)
-    #             session.commit()
-    #         txt_erro_delete.visible = False
-    #         txt_sucess_delete.visible = True
-
-    #     except:
-    #         txt_erro_delete.visible = True
-    #         txt_sucess_delete.visible = False
-    #         print('Erro ao excluir')
-    #     page.update()
-    #     print('Excluido com sucesso')
-            
-            
-    def close_anchor(e):
-        text = f"{e.control.data}"
-        print(f"closing view from {text}")
-        anchor.close_view(text)
-
-    def handle_change(e):
-        print(f"handle_change e.data: {e.data}")
-
-    def handle_submit(e):
-        print(f"handle_submit e.data: {e.data}")
-
-    def handle_tap(e):
-        print(f"handle_tap")
-
-
-    anchor = ft.SearchBar(
-        view_elevation=4,
-        divider_color=ft.colors.AMBER,
-        bar_hint_text="Busque clientes...",
-        view_hint_text="Escolha o cliente entre as sugestões...",
-        on_change=handle_change,
-        on_submit=handle_submit,
-        on_tap=handle_tap,
-        controls=[
-            ft.ListTile(title=ft.Text(f"Nome:{i.name}| Idade:{i.age}"), on_click=close_anchor, data=i)
-            for i in session.query(Cliente).all()
-        ],
-    )
-
-    page.add(
-        ft.Row(
-            alignment=ft.MainAxisAlignment.CENTER,
-            controls=[
-                ft.OutlinedButton(
-                    "Open Search View",
-                    on_click=lambda _: anchor.open_view(),
-                ),
-            ],
-        ),
-        anchor,
-    )
-
     txt_erro = ft.Container(
         ft.Text('Erro ao cadastrar cliente'), visible=False, bgcolor=ft.colors.RED, padding=10, alignment=ft.alignment.center)
     txt_sucess = ft.Container(ft.Text(
