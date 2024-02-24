@@ -53,8 +53,7 @@ def main(page: ft.Page):
                             icon=ft.icons.SUPERVISOR_ACCOUNT, text_align=ft.TextAlign.LEFT)
     age_input = ft.TextField(label="Idade",
                             icon=ft.icons.NUMBERS, text_align=ft.TextAlign.LEFT)
-    btn_submit = ft.ElevatedButton(text="Submit", on_click=cadastro)
-    btn_delete = ft.ElevatedButton(text="Apagar")
+    btn_submit = ft.ElevatedButton(text="Cadastrar", on_click=cadastro )
 
     for i in session.query(Cliente).all():
         lista_clientes.controls.append(
@@ -70,7 +69,7 @@ def main(page: ft.Page):
         )
 
     page.add(txt_erro, txt_sucess,txt_erro_delete, txt_sucess_delete, txt_titulo, user_input, age_input,
-            btn_submit,btn_delete, input_v, lista_clientes)
+            btn_submit, input_v, lista_clientes)
 
 
 ft.app(target=main)
